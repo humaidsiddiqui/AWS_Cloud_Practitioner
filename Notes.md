@@ -21,3 +21,8 @@ An EBS Volume stands for Elastic Block Store. It's a network drive that you can 
 So these EBS Volumes, at the CCP level, can only be mounted to one instance at a time!!! And when you create an EBS Volume, it is bound to a specific availability zone
 
 EBS VLOUMES: are netowrk drive, it will be using the network.And because the network is used, there may be a bit of latency from one computer to reach to another server. It's attached through the network. Finally, it is possible for us to create EBS Volumes and leave them unattached they don't need to be necessarily attached to an ECG instance, they can be attached on demand
+So by default, as we can see, the root EBS Volume
+
+the root EBS Volume is deleted alongside the instance being terminated. So it's enabled and the default any other attached EBS Volume is not deleted because it's disabled by default.But obviously as we can see in this UI, we can control if you want to enable or disable delete on termination. And so use case right, would be for example, if you want to preserve the root volume, when an instance is terminated, So you can take your EBS volumes and make a snapshot,
+
+which is also called a backup, at any point of time that you wanted to. The idea is that you will be able to back up the state of it, and even if the EBS volume is terminated later on, you could restore it from that backup. Now to make a backup, it is not necessary to detach the volume prior to doing the backup, but it is recommended just to make sure that everything is clean on your EBS volume.
