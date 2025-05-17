@@ -10,3 +10,14 @@ IAM:  IAM stands for identity and access management. It is a global service beca
 
 a AWS role is a way to give AWS entities permissions to do stuff on AWS.
 IAM Summary: summary for IAM. We've seen IAM users and they should be mapped to an actual physical user within your company. And this user will have a password for the AWS console. Now we can group these users into groups and therefore users only. We can attach policies or share JSON documents that outline the permission for users or groups. And we can also create roles and these roles will be identities, but this time for maybe EC2 instances or other AWS services. We assume that for security we can enable multi-factor authentication so MFA and also set a password policy for our users. We can use the CLI to manage your services using the command line or the SDK to manage your AWS services, using a programming language. Finally, we can create access keys to access AWS using the CLI or the SDK. And finally, we can audit our IAM usage by creating an IAM credentials report and also using the IAM access advisor service.
+
+SECTION 5 
+EC2 INSTANCE:
+https://aws.amazon.com/ec2/instance-types/ REFER THIS LINK FOR ALL ABOUT EC2 INSTANCES MODULES
+
+SECTION 6:
+An EBS Volume stands for Elastic Block Store. It's a network drive that you can attach to your instances while they run, and we've been using them without even knowing. So this EBS Volumes allow us to persist data, even after the instance is terminated. And so that's the whole purpose, we can recreate an instance and mount to the same EBS Volume from before and we'll get back our data.
+
+So these EBS Volumes, at the CCP level, can only be mounted to one instance at a time!!! And when you create an EBS Volume, it is bound to a specific availability zone
+
+EBS VLOUMES: are netowrk drive, it will be using the network.And because the network is used, there may be a bit of latency from one computer to reach to another server. It's attached through the network. Finally, it is possible for us to create EBS Volumes and leave them unattached they don't need to be necessarily attached to an ECG instance, they can be attached on demand
