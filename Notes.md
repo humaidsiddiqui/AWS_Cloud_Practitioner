@@ -25,4 +25,15 @@ So by default, as we can see, the root EBS Volume
 
 the root EBS Volume is deleted alongside the instance being terminated. So it's enabled and the default any other attached EBS Volume is not deleted because it's disabled by default.But obviously as we can see in this UI, we can control if you want to enable or disable delete on termination. And so use case right, would be for example, if you want to preserve the root volume, when an instance is terminated, So you can take your EBS volumes and make a snapshot,
 
-which is also called a backup, at any point of time that you wanted to. The idea is that you will be able to back up the state of it, and even if the EBS volume is terminated later on, you could restore it from that backup. Now to make a backup, it is not necessary to detach the volume prior to doing the backup, but it is recommended just to make sure that everything is clean on your EBS volume.
+which is also called a backup, at any point of time that you wanted to. The idea is that you will be able to back up the state of it, and even if the EBS volume is terminated later on, you could restore it from that backup. Now to make a backup, it is not necessary to detach the volume prior to doing the backup, but it is recommended just to make sure that everything is clean on your EBS volume. we can also copy snapshots across availability zones or regions, and the idea is that you would be able to transfer some of your data in a different region on AWS to leverage the global infrastructure. an EBS snapshot archive. So it allows you to move your snapshots to another storage tier called an archive tier, and that tier is 75% cheaper. So your snapshot is going to be moved, it takes you between 24 to 72 hours to restore from the archive. So on deleting the snapshots, it would go into recycle bin.
+
+AMI stands for Amazon machine image and they represent a customization of an EC2 instance.
+You can customize it into your own and what is in an AMI. if we create our own AMI
+
+we're going to get a faster boot time and configuration time because all the software that we want to install onto our EC2 instance is going to be prepackaged through the AMI. So we have to build our own AMIs and they can be built for a specific region and then they can be copied across region if we wanted to use it and leverage the AWS global infrastructure.
+
+EC2 Image Builder.It is used to automate the creation of virtual machines or container images.That means that you're gonna be able with EC2 Image Builder
+to automate the creation, maintain, validate and test AMIs for EC2 instances.
+Next, EC2 Image Builder can be run on a schedule.
+
+So you can define a weekly schedule or you can say you can run whenever packages are updated or you can run it manually, et cetera, et cetera. And it is a free service, so you're only going to pay for the underlying resources.`
