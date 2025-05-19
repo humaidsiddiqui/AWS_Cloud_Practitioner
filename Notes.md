@@ -36,4 +36,61 @@ EC2 Image Builder.It is used to automate the creation of virtual machines or con
 to automate the creation, maintain, validate and test AMIs for EC2 instances.
 Next, EC2 Image Builder can be run on a schedule.
 
-So you can define a weekly schedule or you can say you can run whenever packages are updated or you can run it manually, et cetera, et cetera. And it is a free service, so you're only going to pay for the underlying resources.`
+So you can define a weekly schedule or you can say you can run whenever packages are updated or you can run it manually, et cetera, et cetera. And it is a free service, so you're only going to pay for the underlying resources.
+
+EC2 Instance Store
+· EBS volumes are network drives with good but "limited" performance
+· If you need a high-performance hardware disk, use EC2 Instance Store
+· Better I/O performance
+. EC2 Instance Store lose their storage if they're stopped (ephemeral)
+· Good for buffer / cache / scratch data / temporary content
+· Risk of data loss if hardware fails
+. Backup and replication are your responsibility
+from an exam perspective anytime you see very high performance hardware attached volumefor your EC2 Instances, think local EC2 Instance Store.
+That's it.
+
+EFS:
+So, before we had an EBS volume attached to only one EC2 instance at a time.But with an EFS drive, you can mount it onto hundreds of EC2 instances.
+EFS - Elastic File System
+· Managed NFS (network file system) that can be mounted on 100s of EC2
+· EFS works with Linux EC2 instances in multi-AZ
+· Highly available, scalable, expensive (3x gp2), pay per use, no capacity planning
+
+DIFFERENCES BETWEEN EBS AND EFS:
+So, with EBS, say we had EC2 instance in one AZ and another one.Then the EBS volume can only be attached to one instance in one specific AZ. And the EBS volumes are bound to specific availability zones. But if we wanted to move over the EBS volume from one AZ to another, we could create a snapshot, it would create an EBS snapshot and then restore that snapshot into a new availability zone. And effectively we would've moved the EBS volume over. But this is a copy, this is not an in-sync replica.This is a copy, and that would mean that this drive can now be used by another EC2 instance. 
+
+EFS is a network file system. That means that whatever is on the EFS drive is shared by everything that is mounted to it. we have many instances in Availability Zone 1 on one or many instances as well on Availability Zone 2. At the same time, all these instances can mount the same EFS drive, okay, using a mount target, and they will all see the same files. So, that makes it a shared file system.
+
+EFS Infrequent Access (EFS-IA)
+· Storage class that is cost-optimized for files not
+accessed every day
+· Up to 92% lower cost compared to EFS Standard
+· EFS will automatically move your files to EFS-IA
+based on the last time they were accessed
+· Enable EFS-IA with a Lifecycle Policy
+· Example: move files that are not accessed for 60
+days to EFS-IA
+. Transparent to the applications accessing EFS
+
+AWS RESPONSIBILITY:
+AWS, of course, is responsible for their infrastructure, but also because in the technical specification of EBS, EFS, the tell you the data is replicated across many hardware, it is AWS responsibility to perform that replication. So that if one day some hardware is not working, you as a customer is not impacted.
+Also, anytime an EBS drive would fail, or one part of it would fail. It is obviously AWS responsibility to replace that faulty hardware.
+
+MY RESPONSIBILTIY:
+setting up any backup or snapshot procedures
+Well, setting up any backup or snapshot procedures and guidelines is very important to ensure that you don't lose your data. Setting up data encryption is another layer of protection to ensure that people cannot have access to your data, you need to understand the risks that are associated with it, which is that you can lose the drive if somehow there's a faulty hardware, or that if you stop or terminate the EC2 instance that has an instant store,then the data will be lost.So again, it would be responsibility to back it up in the first place.
+
+AMAZON FSX: which is a managed service to get third-party high-performance file systems on AWS. high-performance file systems on AWS. So in case you don't wanna use EFS or S3, and you want something else, then you can use FSX
+
+Amazon FSx for Windows File Server
+ A fully managed, highly reliable, and scalable windows native shared file system, Built on Windows File Server
+ Supports SMB protocol & Windows NTFS
+ Integrated with Microsoft Active Directory
+ Can be accessed from AWS or Corporate data center your on-premise infrastructure
+ 
+Amazon FSx for Lustre
+· A fully managed, high-performance, scalable file storage for High Performance
+Computing (HPC)
+· The name Lustre is derived from "Linux" and "cluster"
+· Machine Learning, Analytics, Video Processing, Financial Modeling, ...
+· Scales up to 100s GB/s, millions of IOPS, sub-ms latencies
