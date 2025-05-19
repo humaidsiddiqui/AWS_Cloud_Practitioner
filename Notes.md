@@ -87,10 +87,57 @@ Amazon FSx for Windows File Server
  Supports SMB protocol & Windows NTFS
  Integrated with Microsoft Active Directory
  Can be accessed from AWS or Corporate data center your on-premise infrastructure
- 
+
 Amazon FSx for Lustre
 · A fully managed, high-performance, scalable file storage for High Performance
 Computing (HPC)
 · The name Lustre is derived from "Linux" and "cluster"
 · Machine Learning, Analytics, Video Processing, Financial Modeling, ...
 · Scales up to 100s GB/s, millions of IOPS, sub-ms latencies
+
+EC2 Instance Storage - Summary
+ EBS volumes:
+· network drives attached to one EC2 instance at a time
+. Mapped to an Availability Zones
+· Can use EBS Snapshots for backups / transferring EBS volumes across AZ
+AMI: create ready-to-use EC2 instances with our customizations
+EC2 Image Builder: automatically build, test and distribute AMIs
+EC2 Instance Store:
+· High performance hardware disk attached to our EC2 instance
+· Lost if our instance is stopped / terminated
+EFS: network file system, can be attached to 100s of instances in a region
+EFS-IA: cost-optimized storage class for infrequent accessed files
+FSx for Windows: Network File System for Windows servers
+ESx for Lustre: High Performance Computing Linux file system
+
+Vertical Scalability
+· Vertical Scalability means increasing the size
+of the instance
+· For example, your application runs on a
+t2.micro
+
+Horizontal Scalability: It means increasing the number of instances / system for your applition.
+it implies to distributed file system and common for web applications
+high availability is an example for horizontal scaling
+
+Why use a load balancer?
+· Spread load across multiple downstream instances
+· Expose a single point of access (DNS) to your application
+· Seamlessly handle failures of downstream instances
+· Do regular health checks to your instances
+· Provide SSL termination (HTTPS) for your websites
+· High availability across zones
+
+types of load balancers :
+Application load balancer, Network Load balancer, gateway load balancer
+
+Auto Scaling:
+· In real-life, the load on your websites and application can change
+. In the cloud, you can create and get rid of servers very quickly
+. The goal of an Auto Scaling Group (ASG) is to:
+· Scale out (add EC2 instances) to match an increased load
+· Scale in (remove EC2 instances) to match a decreased load
+· Ensure we have a minimum and a maximum number of machines running
+· Automatically register new instances to a load balancer
+· Replace unhealthy instances
+. Cost Savings: only run at an optimal capacity (principle of the cloud)
