@@ -166,3 +166,157 @@ Elasticity is the ability to scale up and down based on demand. And agility is a
 load balancers, or ELB, are allowing us to distribute traffic across backend EC2 instances, and they can be spread out across multiple availability zones. We support health checks to make sure that the backend EC2 instances are indeed healthy.
 
 auto scaling groups that allow us to implement elasticity for our application, therefore spreading our load across multiple AZ and scaling accordingly. So we scale these EC2 instances based on the demand on your system, and we can replace unhealthy instances.
+
+AMAZON S3 BUCKET: 
+· Amazon S3 allows people to store objects (files) in "buckets" (directories)
+· Buckets must have a globally unique name (across all regions all accounts)
+· Buckets are defined at the region level
+· S3 looks like a global service but buckets are created in a region
+· Naming convention
+· No uppercase, No underscore
+· 3-63 characters long
+· Not an IP
+· Must start with lowercase letter or number
+
+Amazon S3 - Objects
+· Objects (files) have a Key
+· The key is the FULL path:
+· s3://my-bucket/my_file.txt
+· s3://my-bucket/my_folderl/another_folder/my_file.txt
+· The key is composed of prefix + object name
+· s3://my-bucket/my_folderl/another_folder/my_file.txt
+. There's no concept of "directories" within buckets
+(although the UI will trick you to think otherwise)
+keys are just very, very long names that contain slashes and keys are made of a prefix and an object name.
+
+Amazon S3 - Security
+· User-Based
+. IAM Policies - which API calls should be allowed for a specific user from IAM
+· Resource-Based
+· Bucket Policies - bucket wide rules from the S3 console - allows cross account
+· Object Access Control List (ACL) - finer grain (can be disabled)
+· Bucket Access Control List (ACL) - less common (can be disabled)
+· Note: an IAM principal can access an S3 object if
+. The user IAM permissions ALLOW it OR the resource policy ALLOWS it
+. AND there's no explicit DENY
+encryption is can be done in s3 bucket object.
+
+S3 Bucket Policies
+· JSON based policies
+· Resources: buckets and objects
+· Effect: Allow / Deny
+. Actions: Set of API to Allow or Deny
+Principal: 
+The account or user to apply the policy to
+· Use S3 bucket for policy to:
+· Grant public access to the bucket
+· Force objects to be encrypted at upload
+· Grant access to another account (Cross
+Account)
+
+Amazon S3 - Versioning
+· You can version your files in Amazon S3
+. It is enabled at the bucket level
+· Same key overwrite will change the "version": 1, 2, 3 ....
+· It is best practice to version your buckets
+· Protect against unintended deletes (ability to restore a version)
+· Easy roll back to previous version
+· Notes:
+. Any file that is not versioned prior to enabling versioning will
+have version "null"
+· Suspending versioning does not delete the previous versions
+
+S3 Storage Classes
+· Amazon S3 Standard - General Purpose
+· Amazon S3 Standard-Infrequent Access (IA)
+· Amazon S3 One Zone-Infrequent Access
+· Amazon S3 Glacier Instant Retrieval
+· Amazon S3 Glacier Flexible Retrieval
+· Amazon S3 Glacier Deep Archive
+· Amazon S3 Intelligent Tiering
+· Can move between classes manually or using S3 Lifecycle configurations
+
+
+S3 Bucket Encryption:
+What is server-side encryption?
+Well, the user uploads an object into Amazon S3,
+and then that object when it arrives in the bucket
+is going to be encrypted by Amazon S3 for security purposes.
+The idea is that the server is doing the encryption,
+and therefore we call this server-side encryption.
+On the opposite, we have client-side encryption.
+This is when the user will actually take the file,
+will encrypt it before uploading it,
+so the lock is done by the user,
+and then put it in the bucket.
+And that's called client-side encryption.
+
+IAM Access Analyzer for Amazon S3, this is a monitoring feature
+
+for your Amazon S3 buckets to ensure
+
+that only the intended people have access
+
+to your S3 buckets.
+
+So, how does that work?
+
+Well, it's going to analyze your Bucket Policies,
+
+your S3 ACLs, your S3 Access Point Policies,
+
+and so on, and is going to surface to you
+
+which buckets are going to be publicly accessible,
+
+which buckets have been shared
+
+with other AWS accounts and so on.
+
+And the idea is that you can review this and say, okay,
+
+this is normal, this is expected, or this looks a bit
+
+as a security issue because I did not intend
+
+to share this bucket with these people,
+
+and therefore, you can take action.
+
+And this is powered by IAM Access Analyzer,
+
+S3 BUCKET SHARED RESPONSIBILITY: 
+        AWS
+· Infrastructure (global secur
+durability, availability, sustair
+concurrent loss of data in
+two facilities)
+· Configuration and
+vulnerability analysis
+· Compliance validation
+
+        USER
+· S3 Versioning
+· S3 Bucket Policies
+· S3 Replication Setup
+· Logging and Monitoring
+· S3 Storage Classes
+· Data encryption at rest and in
+transit
+
+AWS Snowball.
+
+So it's a highly secure and portable device that allows you to collect and process data at the edge and migrate data in and out of AWS.
+So if you have a migration of say, petabytes of data, Snowball may be a good use case. So we have two kind of Snowball edge devices. One is called the Edge Storage Optimized, and the other one is called the Edge Compute Optimized. And the difference lies in their storage.
+As you can see, one has 210 terabytes and the other one has 28 terabytes. Amazon S3 as a standalone service, but it is possible for you to use it in a hybrid cloud type of setting. So AWS wants you to bridge between your on-premises environment to AWS and that's called a hybrid cloud. So part of your infrastructure is going to be on-premises and the rest is going to be on the cloud. summarize the storage options on AWS, the block storage would be EBS or an EC2 instance store. The file storage would be a network file system so Amazon EFS, and object storage would be Amazon S3 or Glacier. And where does the Storage Gateway fit in all this? Well, the Storage Gateway is going to be bridging your on-premises data and cloud data in AWS.
+
+Amazon S3 - Summary
+· Buckets vs Objects: global unique name, tied to a region
+· S3 security: IAM policy, S3 Bucket Policy (public access), S3 Encryption
+· S3 Websites: host a static website on Amazon S3
+· S3 Versioning: multiple versions for files, prevent accidental deletes
+· S3 Replication: same-region or cross-region, must enable versioning
+· S3 Storage Classes: Standard, IA, IZ-IA, Intelligent, Glacier (Instant, Flexible, Deep)
+· Snow Family: import data onto S3 through a physical device, edge computing
+· OpsHub: desktop application to manage Snow Family devices
+· Storage Gateway: hybrid solution to extend on-premises storage to S3
