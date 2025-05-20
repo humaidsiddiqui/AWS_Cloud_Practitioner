@@ -141,3 +141,28 @@ Auto Scaling:
 · Automatically register new instances to a load balancer
 · Replace unhealthy instances
 . Cost Savings: only run at an optimal capacity (principle of the cloud)
+
+Auto Scaling Groups - Scaling Strategies
+. Manual Scaling: Update the size of an ASG manually
+. Dynamic Scaling: Respond to changing demand
+· Simple / Step Scaling
+· When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
+· When a CloudWatch alarm is triggered (example CPU < 30%), then remove |
+· Target Tracking Scaling
+. Example: I want the average ASG CPU to stay at around 40%
+· Scheduled Scaling
+· Anticipate a scaling based on known usage patterns
+. Example : increase the minimum capacity to 10am to 5pm on firday
+
+Predictive Scaling.
+So this one uses Machine Learning to predict future traffic ahead of time so there's some algorithms, they will look at the past traffic patterns, and it will forecast what will happen to traffic based on the past patterns. And so the idea is that it's called predictive because we predict what the load will be over time, and maybe the load is just on a daily basis it peaks for three hours. So this is the kind of things that Predictive Scaling will pick up, okay. And it will automatically provision the right number of EC2 instances in advance to match that predicted period. So this is what the graphs you see on the right hand side. This is very helpful when you have time-based patterns and you just want to have an easy, without any intervention type of scaling trust strategies that is powered by Machine Learning, then that would be Predictive Scaling.
+
+high availability
+means that you are having your applicationsacross multiple availability zone.
+Vertical scaling means that you're increasing the size of an instance.
+And horizontal scaling, is that you are increasing the number of instances.
+Elasticity is the ability to scale up and down based on demand. And agility is a concept of the Cloud that is going to be able to make you work faster, because you can create and delete resources very, very quickly.
+
+load balancers, or ELB, are allowing us to distribute traffic across backend EC2 instances, and they can be spread out across multiple availability zones. We support health checks to make sure that the backend EC2 instances are indeed healthy.
+
+auto scaling groups that allow us to implement elasticity for our application, therefore spreading our load across multiple AZ and scaling accordingly. So we scale these EC2 instances based on the demand on your system, and we can replace unhealthy instances.
