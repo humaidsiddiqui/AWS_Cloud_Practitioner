@@ -79,3 +79,78 @@ In the exam both can be used. So it is a fully managed in-memory cache for Dynam
 
 Redshift
 It is OLAP, or Online Analytic Analytical Processing, which is used to do analytics and data warehousing. So anytime in the exam you're saying a database needs to be a warehouse and to do analytics on it, then Redshift is going to be your answer. With Redshift, you don't load the data continuously. You load it, for example, every hour. And the idea with Redshift that is really, really good at analyzing data and making some computations. So it boasts 10x better performance than other data warehouses and scales to petabytes of data. The data is stored in columns, so it's called a columnar storage of data instead of row-based. So anytime you see columnar, again,
+
+Amazon EMR
+· EMR stands for"Elastic MapReduce"
+· EMR helps creating Hadoop clusters (Big Data) to analyze and process
+vast amount of data
+· The clusters can be made of hundreds of EC2 instances
+· Also supports Apache Spark, HBase, Presto, Flink ...
+· EMR takes care of all the provisioning and configuration
+· Auto-scaling and integrated with Spot instances
+· Use cases: data processing, machine learning, web indexing, big data ...
+
+Amazon Athena.
+So from an exam perspective,
+whenever you see serverless analyze data in S3
+use SQL, then think Amazon Athena.
+
+Amazon Athena is a serverless query service to perform analytics against your objects stored in Amazon S3.
+So the idea is that you would use the SQL query language to create these files, but you don't need to load them. They just need to be in S3 and Athena will do the rest. So these files can be formatted in different ways, such as CSV, JSON, ORC, Avro, and Parquet and the Athena is built on the Presto engine
+
+Amazon QuickSight.
+
+So it's a serverless, machine learning-powered business intelligence service to create interactive dashboards. So behind this very complicated tagline, all you have to remember is that Amazon QuickSight allows you to create dashboards on your databases so we can visually represent your data and show your business users the insights they're looking for, okay. So QuickSight allows you to create all these kind of cool graphs, charts, and so on. So it's fast, it's automatically scalable. It's embeddable and there's per-session pricing, so you don't have to provision any servers.
+
+we have DocumentDB, which is an Aurora version for MongoDB.
+compatible with MongoDB.
+
+So MongoDB is used to store query and index JSON data, and you have the same similar deployment concept as Aurora with DocumentDB. So that means it's a fully managed database, it's highly available. Data is replicated across three availability zones and DocumentDB storage automatically will grow in increments of 10 gigabytes, and DocumentDB has been engineered so it can scale to workloads with millions of requests per second.
+
+Neptune 
+Neptune is a fully-managed graph database. Neptune is a great choice of database when it comes to graph datasets.
+ exam perspective,
+anytime you see anything related to graph databases, think no more than Neptune.
+
+Amazon Timestream
+· Fully managed, fast, scalable, serverless time
+series database
+· Automatically scales up/down to adjust
+capacity
+· Store and analyze trillions of events per day
+. 1000s times faster & 1/10th the cost of
+relational databases
+
+Amazon QLDB
+· QLDB stands for "Quantum Ledger Database"
+· A ledger is a book recording financial transactions
+· Fully Managed, Serverless, High available, Replication across 3 AZ
+. Used to review history of all the changes made to your application data over time
+· Immutable system: no entry can be removed or modified, cryptographically verifiable
+
+So the difference between QLDB and Managed Blockchain is that QLDB has a central authority component and it's a ledger, whereas managed blockchain is going to have a de-centralization component as well. So that's it, anytime you see financial transactions and ledger, think QLDB.
+
+AMAZON MANAGED BLOCKCHAIN
+So from an exam perspective, if you see anything related to Blockchains or Hyperledger fabric or Ethereum, you have to think Amazon managed Blockchain which is also a decentralized Blockchain, okay? So make sure you remember that and that's it, all you want to know for the exam
+
+Glue 
+is a managed extract, transform, and load service,or ETL, and from an exams perspective, that's all you need to know.
+
+DATA MIGRATION:
+how do you migrate data from one database to another? 
+For this we can use DMS which is properly named the Database Migration Service. So we use source database and once we extract the data so we'll run an EC2 instance that will be running the DMS software. We'll extract the data from the source database and then DMS will insert the data back into a target database that will be somewhere else. So with DMS we get a quick and secure database migration
+
+Databases & Analytics Summary in AWS
+· Relational Databases - OLTP: RDS & Aurora (SQL)
+· Differences between Multi-AZ, Read Replicas, Multi-Region
+· In-memory Database: ElastiCache
+· Key/Value Database: DynamoDB (serverless) & DAX (cache for DynamoDB)
+· Warehouse - OLAP: Redshift (SQL)
+· Hadoop Cluster: EMR
+· Athena: query data on Amazon S3 (serverless & SQL)
+· QuickSight: dashboards on your data (serverless)
+· DocumentDB: "Aurora for MongoDB" (JSON - NoSQL database)
+· Amazon QLDB: Financial Transactions Ledger (immutable journal, cryptographically verifiable)
+· Amazon Managed Blockchain: managed Hyperledger Fabric & Ethereum blockchains
+· Glue: Managed ETL (Extract Transform Load) and Data Catalog service
+· Database Migration: DMS
