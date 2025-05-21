@@ -154,3 +154,5 @@ Databases & Analytics Summary in AWS
 · Amazon Managed Blockchain: managed Hyperledger Fabric & Ethereum blockchains
 · Glue: Managed ETL (Extract Transform Load) and Data Catalog service
 · Database Migration: DMS
+. Graph Database: Neptune
+. Timestream database: Time-series database.
