@@ -54,8 +54,6 @@ CloudFront vs S3 Cross Region Replication
 · Read only
 . Great for dynamic content that needs to be available at low-latency in few regions
 
-
-
 AWS Global Accelerator vs CloudFront
 . They both use the AWS global network and its edge locations around the world
 · Both services integrate with AWS Shield for DDoS protection.
