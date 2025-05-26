@@ -36,6 +36,25 @@ after adding files into s3 bucket, we cannot access because it not public
 let's see how we can instead use CloudFront to make these files accessible without making them public.
 
 CloudFront is a global distribution so there's no region selection.
+AWS CloudFront
+. Content Delivery Network (CDN)
+· Improves read performance, content is cached at the edge
+· Improves users experience
+· 216 Point of Presence globally (edge locations)
+· DDoS protection (because worldwide), integration with Shield, AWS Web Application Firewall
+
+CloudFront vs S3 Cross Region Replication
+· CloudFront:
+· Global Edge network
+· Files are cached for a TTL (maybe a day)
+· Great for static content that must be available everywhere
+· S3 Cross Region Replication:
+· Must be setup for each region you want replication to happen
+· Files are updated in near real-time
+· Read only
+. Great for dynamic content that needs to be available at low-latency in few regions
+
+
 
 AWS Global Accelerator vs CloudFront
 . They both use the AWS global network and its edge locations around the world
@@ -58,4 +77,39 @@ premises infrastructure alongside à cloud infrastructure
 . AWS Outposts are "server racks" that offers the same AWS infrastructure, services, APIs & tools to build your own applications on-premises just as in the cloud
 · AWS will setup and manage "Outposts Racks" within your on-premises infrastructure and you can start leveraging AWS services on-premises
 · You are responsible for the Outposts Rack physical security
+
+AWS WaveLength
+· WaveLength Zones are infrastructure deployments embedded within the telecommunications providers' datacenters at the edge of the 5G networks
+. Brings AWS services to the edge of the 5G networks
+· Example: EC2, EBS, VPC ...
+· Ultra-low latency applications through 5G networks
+. Traffic doesn't leave the Communication Service Provider's (CSP) network
+. High-bandwidth and secure connection to the parent AWS Region
+· No additional charges or service agreements
+· Use cases: Smart Cities, ML-assisted diagnostics,
+Connected Vehicles, Interactive Live Video Streams, AR/VR, Realtime Gaming.
+
+Global Applications in AWS - Summary
+· Global DNS: Route 53 
+. Great to route users to the closest deployment with least latency
+· Great for disaster recovery strategies
+. Global Content Delivery Network (CDN): CloudFront
+· Replicate part of your application to AWS Edge Locations - decrease latency
+· Cache common requests - improved user experience and decreased latency
+· S3 Transfer Acceleration
+· Accelerate global uploads & downloads into Amazon S3
+· AWS Global Accelerator
+· Improve global application availability and performance using the AWS global network
+
+Global Applications in AWS - Summary
+· AWS Outposts
+. Deploy Outposts Racks in your own Data Centers to extend AWS services
+· AWS WaveLength
+. Brings AWS services to the edge of the 5G networks
+· Ultra-low latency applications
+· AWS Local Zones
+· Bring AWS resources (compute, database, storage, ... ) closer to your users
+· Good for latency-sensitive applications
+
+
 
