@@ -27,3 +27,60 @@ GuardDuty is a very good tool to protect you against cryptocurrency attacks  bec
 Amazon Macie
 · Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS.
 . Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII)
+
+Amazon Detective
+. GuardDuty, Macie, and Security Hub are used to identify potential security issues, or findings
+· Sometimes security findings require deeper analysis to isolate the root cause and take action - it's a complex process
+· Amazon Detective analyzes, investigates, and quickly identifies the root cause of security issues or suspicious activities (using ML and graphs)
+· Automatically collects and processes events from VPC Flow Logs, CloudTrail, GuardDuty and create a unified view
+
+AWS Abuse
+· Report suspected AWS resources used for abusive or illegal purposes
+· Abusive & prohibited behaviors are:
+· Spam - receving undesired emails from AWS-owned IP address, websites & forums spammed by AWS resources
+· Port scanning - sending packets to your ports to discover the unsecured ones
+· DoS or DDOS attacks - AWS-owned IP addresses attempting to overwhlem or crash your servers/softwares
+· Intrusion attempts - logging in on your resources
+· Hosting objectionable or copyrighted content - distributing illegal or copyrighted content without consent
+· Distributing malware - AWS resources distributing softwares to harm computers or machines
+· Contact the AWS Abuse team: AWS abuse form, or abuse@amazonaws.com
+
+Root user privileges
+. Root user = Account Owner (created when the account is created)
+· Has complete access to all AWS services and resources
+· Lock away your AWS account root user access keys!
+· Do not use the root account for everyday tasks, even administrative tasks
+. Actions that can be performed only by the root user:
+· Change account settings (account name, email address, root user password, root user access keys)
+· View certain tax invoices
+· Close your AWS account
+· Restore IAM user permissions
+· Change or cancel your AWS Support plan
+· Register as a seller in the Reserved Instance Marketplace
+· Configure an Amazon S3 bucket to enable MFA
+· Edit or delete an Amazon S3 bucket policy that includes an invalidVPC ID or VPC endpoint ID
+· Sign up for GovCloud
+
+Section Summary: Security & Compliance
+. Shared Responsibility on AWS
+· Shield: Automatic DDOS Protection + 24/7 support for advanced
+· WAF: Firewall to filter incoming requests based on rules
+· KMS: Encryption keys managed by AWS
+· CloudHSM: Hardware encryption, we manage encryption keys
+· AWS Certificate Manager: provision, manage, and deploy SSL/TLS Certificates
+· Artifact: Get access to compliance reports such as PCI, ISO, etc ...
+. GuardDuty: Find malicious behavior with VPC, DNS & CloudTrail Logs
+· Inspector: find software vulnerabilities in EC2, ECR Images, and Lambda functions
+· Network Firewall: Protect VPC against network attacks
+· Config: Track config changes and compliance against rules
+· Macie: Find sensitive data (ex: PII data) in Amazon S3 buckets
+· CloudTrail: Track API calls made by users within account
+· AWS Security Hub: gather security findings from multiple AWS accounts
+· Amazon Detective: find the root cause of security issues or suspicious activities
+· AWS Abuse: Report AWS resources used for abusive or illegal purposes
+· Root user privileges:
+· Change account settings
+· Close your AWS account
+· Change or cancel your AWS Support plan
+· Register as a seller in the Reserved Instance Marketplace
+· IAM Access Analyzer: identify which resources are shared externally
