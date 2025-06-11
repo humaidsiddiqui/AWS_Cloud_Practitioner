@@ -13,3 +13,9 @@ Amazon SageMaker
 · Typically difficult to do all the processes in one place + provision servers
 · Machine learning process (simplified): predicting your exam score
 
+Amazon Kendra
+· Fully managed document search service powered by Machine Learning
+· Extract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs ... )
+· Natural language search capabilities
+· Learn from user interactions/feedback to promote preferred results (Incremental Learning)
+
