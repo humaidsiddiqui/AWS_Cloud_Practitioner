@@ -8,3 +8,8 @@ Amazon Connect:
 · Can integrate with other CRM systems or AWS
 · No upfront payments, 80% cheaper than traditional contact center solutions
 
+Amazon SageMaker
+· Fully managed service for developers / data scientists to build ML models
+· Typically difficult to do all the processes in one place + provision servers
+· Machine learning process (simplified): predicting your exam score
+
