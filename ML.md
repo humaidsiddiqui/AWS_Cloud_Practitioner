@@ -19,3 +19,9 @@ Amazon Kendra
 · Natural language search capabilities
 · Learn from user interactions/feedback to promote preferred results (Incremental Learning)
 
+so from an exam perspective, anytime you see a machine learning service to build recommendations and personalized recommendations, think Amazon Personalize
+
+Amazon Textract
+· Automatically extracts text, handwriting, and data from any scanned documents using Al and ML
+· Extract data from forms and tables
+. Read and process any type of document (PDFs, images, ... )
